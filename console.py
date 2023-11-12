@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 newl = [str(obj) for qk, obj in storage.all().items()
-                      if type(obj).__name__ == substrings[0]]
+                        if type(obj).__name__ == substrings[0]]
                 print(newl)
         else:
             _listnew = [str(obj) for qk, obj in storage.all().items()]
@@ -147,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
         """Supportive method to update() the dictionary."""
         str = _dict.replace("'", '"')
         doc = json.loads(str)
-        
+
         if not reprclass:
             print("** class name missing **")
         elif reprclass not in storage.myclasses():
@@ -216,4 +216,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
