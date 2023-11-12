@@ -12,7 +12,7 @@ class HBNBCommand(cmd.Cmd):
 
     """Cmd class."""
 
-    msg = "(hbnb) "
+    prompt = "(hbnb) "
 
     def _EOFhandle(self, line):
         """Handles EOF to exit.
