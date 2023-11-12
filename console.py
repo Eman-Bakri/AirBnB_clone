@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
         self.onecmd(cmnd)
         return cmnd
 
-    def _create(self, line):
+    def do_create(self, line):
         """Creates a new instance.
         """
         if line == "" or line is None:
@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
             ins.save()
             print(ins.id)
 
-    def _show(self, line):
+    def do_show(self, line):
         """Shows the instance string repr.
         """
         if line == "" or line is None:
@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print(storage.all()[qk])
 
-    def _destroyhandle(self, line):
+    def do_destroy(self, line):
         """Destroy an instance based on the name & id of class.
         """
         if line == "" or line is None:
@@ -114,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
                     del storage.all()[qk]
                     storage.save()
 
-    def _allhandle(self, line):
+    def do_all(self, line):
         """Shows all instances of string repr.
         """
         if line != "":
@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
             _listnew = [str(obj) for qk, obj in storage.all().items()]
             print(_listnew)
 
-    def _counthandle(self, line):
+    def do_count(self, line):
         """Returns the numbers of class instances.
         """
         substrings = line.split(' ')
@@ -166,7 +166,7 @@ class HBNBCommand(cmd.Cmd):
                     setattr(storage.all()[qk], attribute, val)
                 storage.all()[qk].save()
 
-    def _updatehandle(self, line):
+    def do_update(self, line):
         """Updates by changing attribute.
         """
         if line == "" or line is None:
