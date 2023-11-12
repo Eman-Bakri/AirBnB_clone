@@ -12,20 +12,20 @@ class HBNBCommand(cmd.Cmd):
 
     """Cmd class."""
 
-    prompt = "(hbnb) "
+    msg = "(hbnb) "
 
-    def do_EOF(self, line):
+    def _EOFhandle(self, line):
         """Handles EOF to exit.
         """
         print()
         return True
 
-    def do_quit(self, line):
+    def _quithandle(self, line):
         """Exits by Quit command.
         """
         return True
 
-    def emptyline(self):
+    def _emptyline(self):
         """Do nothing when ENTER.
         """
         pass
