@@ -15,7 +15,7 @@ class BaseModel:
 
         Args:
             - *args: list of arguments
-            - **kwargs: key-values arguments dict 
+            - **kwargs: key-values arguments dict.
         """
 
         if kwargs is not None and kwargs != {}:
@@ -54,4 +54,3 @@ class BaseModel:
 
         self.updated_at = datetime.now()
         storage.save()
-

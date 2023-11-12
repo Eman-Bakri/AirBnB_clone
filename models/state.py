@@ -8,4 +8,3 @@ class State(BaseModel):
     """Class for handling state attrs"""
 
     name = ""
-

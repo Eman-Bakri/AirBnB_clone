@@ -22,35 +22,29 @@ class FileStorage:
         from models.review import Review
 
         dictclasses = {"BaseModel": BaseModel,
-                   "User": User,
-                   "State": State,
-                   "City": City,
-                   "Amenity": Amenity,
-                   "Place": Place,
-                   "Review": Review}
+                       "User": User,
+                       "State": State,
+                       "City": City,
+                       "Amenity": Amenity,
+                       "Place": Place,
+                       "Review": Review}
         return dictclasses
 
     def myattributes(self):
         """Returns the attrs with their classess"""
         attrsClasses = {
-            "BaseModel":
-                     {"id": str,
-                      "created_at": datetime.datetime,
-                      "updated_at": datetime.datetime},
-            "User":
-                     {"email": str,
-                      "password": str,
-                      "first_name": str,
-                      "last_name": str},
-            "State":
-                     {"name": str},
-            "City":
-                     {"state_id": str,
-                      "name": str},
-            "Amenity":
-                     {"name": str},
-            "Place":
-                     {"city_id": str,
+            "BaseModel": {"id": str,
+                          "created_at": datetime.datetime,
+                          "updated_at": datetime.datetime},
+            "User": {"email": str,
+                     "password": str,
+                     "first_name": str,
+                     "last_name": str},
+            "State": {"name": str},
+            "City": {"state_id": str,
+                     "name": str},
+            "Amenity": {"name": str},
+            "Place": {"city_id": str,
                       "user_id": str,
                       "name": str,
                       "description": str,
@@ -61,10 +55,9 @@ class FileStorage:
                       "latitude": float,
                       "longitude": float,
                       "amenity_ids": list},
-            "Review":
-            {"place_id": str,
-                         "user_id": str,
-                         "text": str}
+            "Review": {"place_id": str,
+                       "user_id": str,
+                       "text": str}
         }
         return attrsClasses
 
@@ -80,7 +73,7 @@ class FileStorage:
     def save(self):
         """ serialization of __objects to JSON file."""
         with open(FileStorage.__file_path, "w", encoding="utf-8") as file1:
-            d = {qk: val.to_dict() for qk, val in FileStorage.__objects.items()}
+            d = {qk: val.to_dict()for qk, val in FileStorage.__objects.items()}
             json.dump(d, file1)
 
     def reload(self):
@@ -92,4 +85,3 @@ class FileStorage:
             obj_dict = {k: self.myclasses()[v["__class__"]](**v)
                         for k, v in obj_dict.items()}
             FileStorage.__objects = obj_dict
-
