@@ -8,8 +8,8 @@ import json
 class FileStorage:
 
     """Class data storage and retrieve"""
-    _pathfile = "file.json"
-    _objs = {}
+    __file_path = "file.json"
+    __objects = {}
 
     def myclasses(self):
         """Returns  classes as a dictionary."""
@@ -71,23 +71,23 @@ class FileStorage:
     def new(self, obj):
         """Manages objs with keys"""
         qk = "{}.{}".format(type(obj).__name__, obj.id)
-        FileStorage._objs[qk] = obj
+        FileStorage.__objects[qk] = obj
 
     def all(self):
         """returns the dictionary _objs"""
-        return FileStorage._objs
+        return FileStorage.__objects
 
     def save(self):
-        """ serialization of _objs to JSON file."""
-        with open(FileStorage._pathfile, "w", encoding="utf-8") as file1:
-            d = {qk: val.to_dict() for qk, val in FileStorage._objs.items()}
+        """ serialization of __objects to JSON file."""
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as file1:
+            d = {qk: val.to_dict() for qk, val in FileStorage.__objects.items()}
             json.dump(d, file1)
 
     def reload(self):
         """Objects Reload"""
-        if not os.path.isfile(FileStorage._pathfile):
+        if not os.path.isfile(FileStorage.__file_path):
             return
-        with open(FileStorage._pathfile, "r", encoding="utf-8") as f:
+        with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
             obj_dict = json.load(f)
             obj_dict = {k: self.myclasses()[v["__class__"]](**v)
                         for k, v in obj_dict.items()}
